@@ -180,7 +180,9 @@ var parameter_block = new Uint8Array([
 // Takes an optional Uint8Array key
 function Blake2b (outlen, key, salt, personal) {
   // zero out parameter_block before usage
-  parameter_block.fill(0)
+  for (let key in parameter_block) {
+    parameter_block[key] = 0;
+  }
   // state, 'param block'
 
   this.b = new Uint8Array(128)
